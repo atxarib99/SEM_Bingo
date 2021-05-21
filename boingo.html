@@ -1,0 +1,173 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+  <style>
+    table, td {
+		table-layout: fixed;
+		width: 100px;
+        border: 1px solid black;
+        border-collapse: collapse;
+        text-align: center;
+    }
+    td {
+        height: 100px;
+    }
+    th {
+        font-size: 40px;
+    }
+	button {
+		height: 15px;
+	}
+  </style>
+
+</head>
+
+<body>
+  <script src="js/scripts.js"></script>
+  <table id="mytable">
+    <thead>
+        <tr>
+        <th width="150" id="b">B</th>
+        <th width="150">I</th> 
+        <th width="150">N</th>
+        <th width="150">G</th>
+        <th width="150">O</th>
+        </tr>
+    </thead>
+    <tbody id="maintable"></tbody>
+  </table>
+</body>
+
+<script>
+    const items = [
+        { text:"Kyle crashes into someone" },
+        { text:"Kyle says 'Popeye's chicken sandwich'" },
+        { text:"Kyle's pedal cable falls out" },
+        { text:"Kyle says 'I'm tired' or yawns" },
+        { text:"Kyle says 'my butt hurts'" },
+        { text:"Kyle says something about FOV" },
+        { text:"Kyle says he is hungry" },
+        { text:"Kyle needs to pee before race/goes to the washroom" },
+        { text:"Kyle says 'jelly bean map'" },
+        { text:"Nelson retires before the end of lap 3" },
+        { text:"Derrick crashes into a car on a different lap" },
+        { text:"Jibran attempts to fix his car's setup by adjusting the camber" },
+        { text:"Arib complains about the Ferrari" },
+        { text:"At least one of the servers is down or a config setting is wrong" },
+        { text:"Tomoki drives offroad" },
+        { text:"McLaren driver complains about the McLaren being slow on the straights" },
+        { text:"Someone asks if it's qualifying or practice" },
+        { text:"David's computer dies/has problems" },
+        { text:"Mike teleports" },
+        { text:"Sean is cursed" },
+        { text:"ET complains about the track" },
+        { text:"Tipi has a Porsche moment" },
+        { text:"Hooda is parked like a cop" },
+        { text:"SG says to keep it clean into turn 1" },
+        { text:"Arib and Kyle battle" },
+        { text:"Jibran and Justin battle" },
+        { text:"Somebody misses their pit box" },
+        { text:"SG has VR problems" },
+        { text:"Bean says he's slow" },
+        { text:"Piccini sends someone to Brazil" },
+        { text:"A.Choi's girlfriend says something" },
+        { text:"Tomoki mentions being to a track/place in real life" },
+        { text:"Justin gets punted" },
+        { text:"Race starts 30 mins+ late" },
+        { text:"Someone complains about the wait time" },
+        { text:"Someone crashes or goes offroad on pit entry" },
+        { text:"Arib makes a reference to Cars" },
+        { text:"Someone crashes and ragequits" },
+        { text:"No crash in turn 1/first heavy braking zone" },
+        { text:"Jibran compares event to f1" },
+        { text:"Kyle says something about framerate" },
+        { text:"Nelson says something completely off topic" },
+        { text:"Nelson sounds like he's 3 miles away" },
+        { text:"Nelson tells a story" },
+        { text:"Someone asks how many laps the race is" },
+        { text:"Someone asks about fuel" },
+        { text:"Someone says to put something on the bingo" }
+    ];
+
+    const buttons = []
+
+    function loadTableData(items) {
+        const table = document.getElementById("mytable");
+        var i;
+        var j;
+        var cellcount = 0;
+        for (i = 0; i < 5; i++) { 
+            var row = document.createElement("tr");
+            for(j = 0; j < 5; j++) {
+                if(i == 2 && j == 2) {
+                    var cell = document.createElement("td");
+                    cell.setAttribute("id", cellcount);
+                    var textNode = document.createTextNode("FREE");
+                    var button = document.createElement("button");
+                    buttons.push(button);
+                    cell.appendChild(textNode);
+                    cell.appendChild(button)
+                    row.appendChild(cell);
+                } else {
+                    index = Math.floor(Math.random() * items.length)
+                    var item = items[index];
+                    var cell = document.createElement("td");
+                    cell.setAttribute("id", cellcount);
+                    var textNode = document.createTextNode(item.text);
+                    var button = document.createElement("button");
+                    buttons.push(button);
+                    cell.appendChild(textNode);
+                    cell.appendChild(button)
+                    row.appendChild(cell);
+                    items.splice(index, 1);
+                }
+                cellcount++;
+            }
+            table.appendChild(row);
+
+        }
+
+        let yellow = "Yellow";
+        let white = document.getElementById("b").style.backgroundColor;
+        buttons[0].onclick = function() {(document.getElementById(0).style.backgroundColor == white) ? document.getElementById(0).style.backgroundColor = "Yellow" : document.getElementById(0).style.backgroundColor = white;}
+        buttons[1].onclick = function() {(document.getElementById(1).style.backgroundColor == white) ? document.getElementById(1).style.backgroundColor = "Yellow" : document.getElementById(1).style.backgroundColor = white;}
+        buttons[2].onclick = function() {(document.getElementById(2).style.backgroundColor == white) ? document.getElementById(2).style.backgroundColor = "Yellow" : document.getElementById(2).style.backgroundColor = white;}
+        buttons[3].onclick = function() {(document.getElementById(3).style.backgroundColor == white) ? document.getElementById(3).style.backgroundColor = "Yellow" : document.getElementById(3).style.backgroundColor = white;}
+        buttons[4].onclick = function() {(document.getElementById(4).style.backgroundColor == white) ? document.getElementById(4).style.backgroundColor = "Yellow" : document.getElementById(4).style.backgroundColor = white;}
+
+        buttons[5].onclick = function() {(document.getElementById(5).style.backgroundColor == white) ? document.getElementById(5).style.backgroundColor = "Yellow" : document.getElementById(5).style.backgroundColor = white;}
+        buttons[6].onclick = function() {(document.getElementById(6).style.backgroundColor == white) ? document.getElementById(6).style.backgroundColor = "Yellow" : document.getElementById(6).style.backgroundColor = white;}
+        buttons[7].onclick = function() {(document.getElementById(7).style.backgroundColor == white) ? document.getElementById(7).style.backgroundColor = "Yellow" : document.getElementById(7).style.backgroundColor = white;}
+        buttons[8].onclick = function() {(document.getElementById(8).style.backgroundColor == white) ? document.getElementById(8).style.backgroundColor = "Yellow" : document.getElementById(8).style.backgroundColor = white;}
+        buttons[9].onclick = function() {(document.getElementById(9).style.backgroundColor == white) ? document.getElementById(9).style.backgroundColor = "Yellow" : document.getElementById(9).style.backgroundColor = white;}
+
+        buttons[10].onclick = function() {(document.getElementById(10).style.backgroundColor == white) ? document.getElementById(10).style.backgroundColor = "Yellow" : document.getElementById(10).style.backgroundColor = white;}
+        buttons[11].onclick = function() {(document.getElementById(11).style.backgroundColor == white) ? document.getElementById(11).style.backgroundColor = "Yellow" : document.getElementById(11).style.backgroundColor = white;}
+        buttons[12].onclick = function() {(document.getElementById(12).style.backgroundColor == white) ? document.getElementById(12).style.backgroundColor = "Yellow" : document.getElementById(12).style.backgroundColor = white;}
+        buttons[13].onclick = function() {(document.getElementById(13).style.backgroundColor == white) ? document.getElementById(13).style.backgroundColor = "Yellow" : document.getElementById(13).style.backgroundColor = white;}
+        buttons[14].onclick = function() {(document.getElementById(14).style.backgroundColor == white) ? document.getElementById(14).style.backgroundColor = "Yellow" : document.getElementById(14).style.backgroundColor = white;}
+
+        buttons[15].onclick = function() {(document.getElementById(15).style.backgroundColor == white) ? document.getElementById(15).style.backgroundColor = "Yellow" : document.getElementById(15).style.backgroundColor = white;}
+        buttons[16].onclick = function() {(document.getElementById(16).style.backgroundColor == white) ? document.getElementById(16).style.backgroundColor = "Yellow" : document.getElementById(16).style.backgroundColor = white;}
+        buttons[17].onclick = function() {(document.getElementById(17).style.backgroundColor == white) ? document.getElementById(17).style.backgroundColor = "Yellow" : document.getElementById(17).style.backgroundColor = white;}
+        buttons[18].onclick = function() {(document.getElementById(18).style.backgroundColor == white) ? document.getElementById(18).style.backgroundColor = "Yellow" : document.getElementById(18).style.backgroundColor = white;}
+        buttons[19].onclick = function() {(document.getElementById(19).style.backgroundColor == white) ? document.getElementById(19).style.backgroundColor = "Yellow" : document.getElementById(19).style.backgroundColor = white;}
+
+        buttons[20].onclick = function() {(document.getElementById(20).style.backgroundColor == white) ? document.getElementById(20).style.backgroundColor = "Yellow" : document.getElementById(20).style.backgroundColor = white;}
+        buttons[21].onclick = function() {(document.getElementById(21).style.backgroundColor == white) ? document.getElementById(21).style.backgroundColor = "Yellow" : document.getElementById(21).style.backgroundColor = white;}
+        buttons[22].onclick = function() {(document.getElementById(22).style.backgroundColor == white) ? document.getElementById(22).style.backgroundColor = "Yellow" : document.getElementById(22).style.backgroundColor = white;}
+        buttons[23].onclick = function() {(document.getElementById(23).style.backgroundColor == white) ? document.getElementById(23).style.backgroundColor = "Yellow" : document.getElementById(23).style.backgroundColor = white;}
+        buttons[24].onclick = function() {(document.getElementById(24).style.backgroundColor == white) ? document.getElementById(24).style.backgroundColor = "Yellow" : document.getElementById(24).style.backgroundColor = white;}
+
+    }
+    loadTableData(items);
+  </script>
+</html>
